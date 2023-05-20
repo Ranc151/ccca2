@@ -1,6 +1,7 @@
 <script setup>
 import ProjectStatement from './components/ProjectStatement.vue'
 import Content from './components/Content.vue'
+
 </script>
 
 <template>
