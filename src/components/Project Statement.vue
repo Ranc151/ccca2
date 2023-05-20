@@ -1,10 +1,13 @@
 <script setup>
+import axios from 'axios'
+
 defineProps({
   msg: {
     type: String,
     required: true
   }
 })
+
 </script>
 
 <template>
@@ -26,7 +29,7 @@ defineProps({
                 Weiyan Chen (Data analysis)
             </li>
             <li>
-                Kai Xu
+                Kai Xu (Data analysis)
             </li>
         </ul>
     </h3>

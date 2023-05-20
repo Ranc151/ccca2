@@ -1,5 +1,5 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import ProjectStatement from './components/Project Statement.vue'
 import TheWelcome from './components/TheWelcome.vue'
 </script>
 
@@ -8,7 +8,7 @@ import TheWelcome from './components/TheWelcome.vue'
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="CCC A2" />
+      <ProjectStatement msg="CCC A2" />
     </div>
   </header>
 
