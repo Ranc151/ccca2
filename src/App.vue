@@ -1,19 +1,24 @@
 <script setup>
-import ProjectStatement from './components/Project Statement.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import ProjectStatement from './components/ProjectStatement.vue'
+import Content from './components/Content.vue'
 </script>
 
 <template>
-  <header>
+  <header style="width: 300px">
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
       <ProjectStatement msg="CCC A2" />
+        <h3>
+            This webpage is a Showcase of Team 16's assignments and the team members are
+
+        </h3>
     </div>
+
   </header>
 
-  <main>
-    <TheWelcome />
+  <main style="width: 824px">
+    <Content />
   </main>
 </template>
 
@@ -27,7 +32,7 @@ header {
   margin: 0 auto 2rem;
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 1024px) {
   header {
     display: flex;
     place-items: center;
