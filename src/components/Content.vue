@@ -4,8 +4,10 @@ import GraphIcon from './icons/IconGraph.vue'
 import DataIcon from './icons/IconData.vue'
 import RankingIcon from './icons/IconRanking.vue'
 import TeamMemberIcon from './icons/IconTeammember.vue'
+import Chart from './chart.vue'
 import axios from "axios";
 import {ref} from "vue";
+
 
 
 
@@ -32,6 +34,7 @@ function dataclick(){ // show data page
 function rankingclick(){ // show map page
     document.getElementById("mainpage").style.display='none'
     document.getElementById("ranking").style.display=''
+
 }
 
 let graph_1_b64 = ref(null)
@@ -196,11 +199,11 @@ function show_SA4(){// show data
       </a>
       <div id = "showgraph" style="display: none">
 
-          <img id="graph1" src="{{img_url1}}">
-          <img id="graph2" src="{{img_url2}}">
-          <img id="graph3" src="{{img_url3}}">
-          <img id="graph4" src="{{img_url4}}">
-          <img id="graph5" src="{{img_url5}}">
+          <img id="graph1" src="{{img_url1}}" alt="">
+          <img id="graph2" src="{{img_url2}}" alt="">
+          <img id="graph3" src="{{img_url3}}" alt="">
+          <img id="graph4" src="{{img_url4}}" alt="">
+          <img id="graph5" src="{{img_url5}}" alt="">
       </div>
 
 
@@ -233,8 +236,12 @@ function show_SA4(){// show data
 
     <div id="ranking" style="display: none">
         <a @click="backmain" style="cursor: pointer">
-            Hello world
-
+            Back
         </a>
+        >
+        <br>
+        <div>
+            <Chart />
+        </div>
     </div>
 </template>

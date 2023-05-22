@@ -5,7 +5,7 @@ import Content from './components/Content.vue'
 </script>
 
 <template>
-  <header style="width: 300px">
+  <header style="width: 200px">
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
@@ -18,7 +18,7 @@ import Content from './components/Content.vue'
 
   </header>
 
-  <main style="width: 824px">
+  <main style="width: 924px">
     <Content />
   </main>
 </template>
