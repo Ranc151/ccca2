@@ -9,7 +9,7 @@ import axios from "axios";
 import {ref} from "vue";
 
 
-
+const url = 'http://127.0.0.1:5000'
 
 function backmain(){ // back to the main page
     document.getElementById("mainpage").style.display=''
@@ -44,11 +44,11 @@ let graph_4_b64 = ref(null)
 let graph_5_b64 = ref(null)
 async function get_graph(){ // get the graph from back end
     try {
-        graph_1_b64.value = (await axios.get('http://127.0.0.1:5000/get_graph_1')).data
-        graph_2_b64.value = (await axios.get('http://127.0.0.1:5000/get_graph_2')).data
-        graph_3_b64.value = (await axios.get('http://127.0.0.1:5000/get_graph_3')).data
-        graph_4_b64.value = (await axios.get('http://127.0.0.1:5000/get_graph_4')).data
-        graph_5_b64.value = (await axios.get('http://127.0.0.1:5000/get_graph_5')).data
+        graph_1_b64.value = (await axios.get(url+'/get_graph_1')).data
+        graph_2_b64.value = (await axios.get(url+'/get_graph_2')).data
+        graph_3_b64.value = (await axios.get(url+'/get_graph_3')).data
+        graph_4_b64.value = (await axios.get(url+'get_graph_4')).data
+        graph_5_b64.value = (await axios.get(url+'/get_graph_5')).data
     } catch (error) {
         console.log(error)
     }
@@ -86,7 +86,7 @@ let GCCSA_data = ref(null) // define the data set
 let SA4_data = ref(null)
 async function get_GCCSA(){ // get data from back end
     try {
-        GCCSA_data.value = (await axios.get('http://127.0.0.1:5000/get_source_data_GCCSA')).data
+        GCCSA_data.value = (await axios.get(url+'/get_source_data_GCCSA')).data
     } catch (error) {
         console.log(error)
     }
@@ -94,7 +94,7 @@ async function get_GCCSA(){ // get data from back end
 }
 async function get_SA4(){ // get data from back end
     try {
-        SA4_data.value = (await axios.get('http://127.0.0.1:5000/get_source_data_SA4')).data
+        SA4_data.value = (await axios.get(url+'/get_source_data_SA4')).data
     } catch (error) {
         console.log(error)
     }
