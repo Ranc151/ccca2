@@ -2,20 +2,25 @@
 import ElementItem from './ElementItem.vue'
 import GraphIcon from './icons/IconGraph.vue'
 import DataIcon from './icons/IconData.vue'
-import MapIcon from './icons/IconMap.vue'
+import RankingIcon from './icons/IconRanking.vue'
 import TeamMemberIcon from './icons/IconTeammember.vue'
 import axios from "axios";
 import {ref} from "vue";
 
+
+
 function backmain(){ // back to the main page
     document.getElementById("mainpage").style.display=''
     document.getElementById("graph").style.display='none'
-    document.getElementById("map").style.display='none'
+    document.getElementById("ranking").style.display='none'
     document.getElementById("data").style.display='none'
 }
+
 function graphclick(){ // show graph page
     document.getElementById("mainpage").style.display='none'
     document.getElementById("graph").style.display=''
+    get_graph()
+
 }
 function dataclick(){ // show data page
     document.getElementById("mainpage").style.display='none'
@@ -24,9 +29,54 @@ function dataclick(){ // show data page
     get_GCCSA()
     get_SA4()
 }
-function mapclick(){ // show map page
+function rankingclick(){ // show map page
     document.getElementById("mainpage").style.display='none'
-    document.getElementById("map").style.display=''
+    document.getElementById("ranking").style.display=''
+}
+
+let graph_1_b64 = ref(null)
+let graph_2_b64 = ref(null)
+let graph_3_b64 = ref(null)
+let graph_4_b64 = ref(null)
+let graph_5_b64 = ref(null)
+async function get_graph(){ // get the graph from back end
+    try {
+        graph_1_b64.value = (await axios.get('http://127.0.0.1:5000/get_graph_1')).data
+        graph_2_b64.value = (await axios.get('http://127.0.0.1:5000/get_graph_2')).data
+        graph_3_b64.value = (await axios.get('http://127.0.0.1:5000/get_graph_3')).data
+        graph_4_b64.value = (await axios.get('http://127.0.0.1:5000/get_graph_4')).data
+        graph_5_b64.value = (await axios.get('http://127.0.0.1:5000/get_graph_5')).data
+    } catch (error) {
+        console.log(error)
+    }
+}
+let img_url1 = ref(null)
+let img_url2 = ref(null)
+let img_url3 = ref(null)
+let img_url4 = ref(null)
+let img_url5 = ref(null)
+
+function show_graph(){
+    document.getElementById("showgraph").style.display=''
+
+    img_url1 = "data:image/png;base64," + graph_1_b64.value
+    document.getElementById("graph1").src=img_url1
+
+    img_url2 = "data:image/png;base64," + graph_2_b64.value
+    document.getElementById("graph2").src=img_url2
+
+    img_url3 = "data:image/png;base64," + graph_3_b64.value
+    document.getElementById("graph3").src=img_url3
+
+    img_url4 = "data:image/png;base64," + graph_4_b64.value
+    document.getElementById("graph4").src=img_url4
+
+    img_url5 = "data:image/png;base64," + graph_5_b64.value
+    document.getElementById("graph5").src=img_url5
+    // console.log(img_url)
+}
+function hidden_graph(){
+    document.getElementById("showgraph").style.display='none'
 }
 
 let GCCSA_data = ref(null) // define the data set
@@ -97,14 +147,12 @@ function show_SA4(){// show data
 
   <ElementItem>
     <template #icon>
-      <MapIcon />
+      <RankingIcon />
     </template>
-    <template #heading>Data on the map</template>
-      Our data contains location information,
-      which can be presented on a map to make comparisons
-      between data more intuitive.
+    <template #heading>Data distribution</template>
+      Our data is sourced from all over Australia, with many cities contributing data.
       <br>
-      To see how the data is displayed on the map you can click on <a @click="mapclick" style="cursor: pointer">here</a>.
+      To see how the data is distribution you can click on <a @click="rankingclick" style="cursor: pointer">here</a>.
   </ElementItem>
 
   <ElementItem>
@@ -131,17 +179,40 @@ function show_SA4(){// show data
       </ul>
   </ElementItem>
   </div>
+
+
   <div id="graph" style="display: none">
     <a @click="backmain" style="cursor: pointer">
-        Hello world
-
+        Back
     </a>
+      >
+      <br>
+      <a @click="show_graph" style="cursor: pointer">
+          show graph
+      </a>
+           |
+      <a @click="hidden_graph" style="cursor: pointer">
+          hidden graph
+      </a>
+      <div id = "showgraph" style="display: none">
+
+          <img id="graph1" src="{{img_url1}}">
+          <img id="graph2" src="{{img_url2}}">
+          <img id="graph3" src="{{img_url3}}">
+          <img id="graph4" src="{{img_url4}}">
+          <img id="graph5" src="{{img_url5}}">
+      </div>
+
+
   </div>
+
+
     <div id="data" style="display: none">
         <div>
             <a @click="backmain" style="cursor: pointer">
               Back
             </a>
+            >
             <br>
             <a id = "GCCSA" style="cursor: pointer" @click="show_GCCSA">show GCCSA Data(part of data)</a>
             <br>
@@ -158,7 +229,9 @@ function show_SA4(){// show data
         </div>
 
     </div>
-    <div id="map" style="display: none">
+
+
+    <div id="ranking" style="display: none">
         <a @click="backmain" style="cursor: pointer">
             Hello world
 
