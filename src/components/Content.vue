@@ -143,7 +143,7 @@ function show_SA4(){// show data
       Our data consists of three parts:
       the first is a twitter file, the second is
       data downloaded from SUDO, and the third is data
-      we get in real time from MASTODON
+      we get in real time from MASTODON. Here are some of the source data from SUDO.
       <br>
       To see the source data you can click on <a @click="dataclick" style="cursor: pointer">here</a>.
   </ElementItem>
@@ -154,6 +154,7 @@ function show_SA4(){// show data
     </template>
     <template #heading>Data distribution</template>
       Our data is sourced from all over Australia, with many cities contributing data.
+      The bar chart here shows the distribution of the data by city.
       <br>
       To see how the data is distribution you can click on <a @click="rankingclick" style="cursor: pointer">here</a>.
   </ElementItem>
