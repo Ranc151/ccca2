@@ -4,11 +4,13 @@ import GraphIcon from './icons/IconGraph.vue'
 import DataIcon from './icons/IconData.vue'
 import RankingIcon from './icons/IconRanking.vue'
 import TeamMemberIcon from './icons/IconTeammember.vue'
-import Chart from './chart.vue'
-import axios from "axios";
-import {ref} from "vue";
+import ChartPage from './chart.vue'
+
+import axios from 'axios';
+import {ref} from 'vue';
 
 
+// const url = 'http://172.26.133.17:8080'
 const url = 'http://127.0.0.1:5000'
 
 function backmain(){ // back to the main page
@@ -47,7 +49,7 @@ async function get_graph(){ // get the graph from back end
         graph_1_b64.value = (await axios.get(url+'/get_graph_1')).data
         graph_2_b64.value = (await axios.get(url+'/get_graph_2')).data
         graph_3_b64.value = (await axios.get(url+'/get_graph_3')).data
-        graph_4_b64.value = (await axios.get(url+'get_graph_4')).data
+        graph_4_b64.value = (await axios.get(url+'/get_graph_4')).data
         graph_5_b64.value = (await axios.get(url+'/get_graph_5')).data
     } catch (error) {
         console.log(error)
@@ -109,14 +111,12 @@ function hidden_data(){ // hidden the data
 function show_GCCSA() { // show data
     document.getElementById("dataview_GCCSA").style.display=''
     document.getElementById("dataview_SA4").style.display='none'
-    console.log(GCCSA_data)
 }
 
 
 function show_SA4(){// show data
     document.getElementById("dataview_GCCSA").style.display='none'
     document.getElementById("dataview_SA4").style.display=''
-    console.log(SA4_data)
 }
 
 </script>
@@ -199,11 +199,11 @@ function show_SA4(){// show data
       </a>
       <div id = "showgraph" style="display: none">
 
-          <img id="graph1" src="{{img_url1}}" alt="">
-          <img id="graph2" src="{{img_url2}}" alt="">
-          <img id="graph3" src="{{img_url3}}" alt="">
-          <img id="graph4" src="{{img_url4}}" alt="">
-          <img id="graph5" src="{{img_url5}}" alt="">
+          <img id="graph1" src="{{img_url1}}" alt="" >
+          <img id="graph2" src="{{img_url2}}" alt="" >
+          <img id="graph3" src="{{img_url3}}" alt="" >
+          <img id="graph4" src="{{img_url4}}" alt="" >
+          <img id="graph5" src="{{img_url5}}" alt="" >
       </div>
 
 
@@ -241,7 +241,7 @@ function show_SA4(){// show data
         >
         <br>
         <div>
-            <Chart />
+            <ChartPage />
         </div>
     </div>
 </template>
