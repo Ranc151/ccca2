@@ -11,8 +11,7 @@ import Content from './components/Content.vue'
     <div class="wrapper">
       <ProjectStatement msg="CCC A2" />
         <h3>
-            This webpage is a Showcase of Team 16's assignments and the team members are
-
+            This webpage is a Showcase of Team 16's assignments.
         </h3>
     </div>
 
