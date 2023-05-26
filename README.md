@@ -1,4 +1,9 @@
 # ccca2
+This is the Front end of CCC A2 Team16
+Back end URL:https://github.com/Ranc151/CCC_A2
+NewWork URL: http://172.26.128.234:8080/
+Presentation Videos:  Part I : https://youtu.be/eGxLEK_CdHE
+                      Part II: https://youtu.be/14YqQl1kxl0(ansible)
 
 This template should help get you started developing with Vue 3 in Vite.
 
